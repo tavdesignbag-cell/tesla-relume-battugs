@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tesla</title>
+  <link rel="icon" href="assets/tesla-logo.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="navbar__container">
+      <div class="navbar__brand">
+        <a href="#" class="logo" aria-label="Home"><img src="assets/tesla-wordmark.svg" alt="Tesla" width="120" height="16" /></a>
+      </div>
+      <nav class="navbar__links" id="nav-links">
+        <a href="#">Vehicles</a>
+        <a href="#">Energy</a>
+        <a href="#">Charging</a>
+        <a href="#">Robotaxi</a>
+        <a href="#">Semi</a>
+        <a href="#">Discover</a>
+        <button class="nav-dropdown" type="button" aria-expanded="false">
+          Shop <img src="assets/chevron-down.svg" alt="" width="24" height="24" />
+        </button>
+      </nav>
+      <div class="navbar__actions">
+        <a href="#" class="btn btn--primary btn--sm">Test Drive</a>
+        <button class="navbar__toggle" type="button" aria-label="Menu" aria-controls="nav-links" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <img class="hero__bg" src="assets/hero.png" alt="" />
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <h1 class="h1">Model 3</h1>
+        <p class="text-md">1.99% APR Available</p>
+        <div class="actions">
+          <a href="#" class="btn btn--primary">Захиалга өгөх</a>
+          <a href="#" class="btn btn--gray">Learn more</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FSD card -->
+    <section class="section">
+      <div class="container">
+        <div class="split-card split-card--tall">
+          <div class="split-card__content">
+            <div class="stack-16">
+              <p class="tagline">Numbers</p>
+              <div class="stack-24">
+                <h2 class="h2">Full Self-Driving<br />(Supervised)</h2>
+                <p class="text-md">Makes every drive easier. Subscribe for $99/mo</p>
+              </div>
+            </div>
+            <div class="numbers">
+              <div class="numbers__item">
+                <p class="h2">7x</p>
+                <p>Fewer Collisions</p>
+              </div>
+              <div class="numbers__item">
+                <p class="h2">17,034,881,000</p>
+                <p>Miles Driven</p>
+              </div>
+            </div>
+            <div class="actions actions--24">
+              <a href="#" class="btn btn--secondary">Schedule Demo</a>
+              <a href="#" class="btn btn--gray">Learn More <img src="assets/chevron-right.svg" alt="" width="24" height="24" /></a>
+            </div>
+          </div>
+          <div class="split-card__media lightbox">
+            <img src="assets/fsd.png" alt="" class="cover" />
+            <div class="overlay"></div>
+            <button class="lightbox__play" type="button" aria-label="Play video">
+              <img src="assets/play.svg" alt="" width="64" height="64" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Vehicles slider -->
+    <section class="section">
+      <div class="container stack-80">
+        <div class="section-title">
+          <h2 class="h2">Vehicles</h2>
+          <p class="text-md">Long Wheelbase Midsize SUV</p>
+        </div>
+        <div class="slider" data-slider>
+          <div class="slider__track">
+            <article class="slide">
+              <img src="assets/card-model-y.png" alt="" class="slide__bg slide__bg--contain" />
+              <div class="overlay"></div>
+              <div class="slide__content">
+                <p class="slide__quote">Model Y L Premium</p>
+                <div class="slide__footer">
+                  <div><p class="semibold">Starting at $61,9902</p><p>Захиалга өгөх</p></div>
+                  <img src="assets/partner-logo-1.svg" alt="" width="120" height="48" />
+                </div>
+              </div>
+            </article>
+            <article class="slide">
+              <img src="assets/card-placeholder.png" alt="" class="slide__bg" />
+              <div class="overlay"></div>
+              <div class="slide__content">
+                <p class="slide__quote">Model 3</p>
+                <div class="slide__footer">
+                  <div><p class="semibold">Lease From $439/mo</p><p>Захиалга өгөх</p></div>
+                  <img src="assets/partner-logo-2.svg" alt="" width="120" height="48" />
+                </div>
+              </div>
+            </article>
+            <article class="slide">
+              <img src="assets/card-placeholder.png" alt="" class="slide__bg" />
+              <div class="overlay"></div>
+              <div class="slide__content">
+                <p class="slide__quote">"I charge at home. The cost is low. The car is fast. It is a good deal."</p>
+                <div class="slide__footer">
+                  <div><p class="semibold">David Kim</p><p>Engineer, Solar Solutions</p></div>
+                  <img src="assets/partner-logo-1.svg" alt="" width="120" height="48" />
+                </div>
+              </div>
+            </article>
+            <article class="slide">
+              <img src="assets/card-placeholder.png" alt="" class="slide__bg" />
+              <div class="overlay"></div>
+              <div class="slide__content">
+                <p class="slide__quote">"The Robotaxi will change the city. No driver. No hassle. Just go."</p>
+                <div class="slide__footer">
+                  <div><p class="semibold">Sarah Jones</p><p>Urban Planner, City Works</p></div>
+                  <img src="assets/partner-logo-2.svg" alt="" width="120" height="48" />
+                </div>
+              </div>
+            </article>
+            <article class="slide">
+              <img src="assets/card-placeholder.png" alt="" class="slide__bg" />
+              <div class="overlay"></div>
+              <div class="slide__content">
+                <p class="slide__quote">"The Semi is a workhorse. It pulls heavy loads up steep grades without strain."</p>
+                <div class="slide__footer">
+                  <div><p class="semibold">Mike Brown</p><p>Fleet Manager, Haulage Co.</p></div>
+                  <img src="assets/partner-logo-1.svg" alt="" width="120" height="48" />
+                </div>
+              </div>
+            </article>
+            <article class="slide">
+              <img src="assets/card-placeholder.png" alt="" class="slide__bg" />
+              <div class="overlay"></div>
+              <div class="slide__content">
+                <p class="slide__quote">"I took the Model 3 on a trip to the mountains. The handling was sure. The views were fine."</p>
+                <div class="slide__footer">
+                  <div><p class="semibold">Emily Davis</p><p>Teacher, High School</p></div>
+                  <img src="assets/partner-logo-2.svg" alt="" width="120" height="48" />
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="slider__controls">
+            <img src="assets/slider-dots.svg" alt="" width="88" height="8" />
+            <div class="slider__buttons">
+              <button class="slider__arrow" type="button" data-dir="-1" aria-label="Previous"><img src="assets/arrow-back.svg" alt="" width="24" height="24" /></button>
+              <button class="slider__arrow" type="button" data-dir="1" aria-label="Next"><img src="assets/arrow-forward.svg" alt="" width="24" height="24" /></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Current offers -->
+    <section class="section">
+      <div class="container">
+        <div class="split-card">
+          <div class="split-card__content">
+            <div class="stack-24">
+              <h2 class="h2">Current Offers</h2>
+              <p class="text-md">Explore limited-time offers on Tesla vehicles.</p>
+            </div>
+            <div class="actions">
+              <a href="#" class="btn btn--primary">L</a>
+              <a href="#" class="btn btn--gray">Learn more</a>
+            </div>
+          </div>
+          <div class="split-card__media">
+            <img src="assets/offers.png" alt="" class="contain" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Find your charge (header + map) -->
+    <section class="charge-header">
+      <div class="section section--flush">
+        <div class="container">
+          <div class="stack-32 max-768">
+            <div class="stack-24">
+              <h1 class="h1">Find Your Charge</h1>
+              <p class="text-md">View the network of Tesla Superchargers and Destination Chargers available near you.</p>
+            </div>
+            <div class="actions">
+              <a href="#" class="btn btn--primary">Call</a>
+              <a href="#" class="btn btn--secondary">Visit</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="charge-header__map">
+        <img src="assets/map.png" alt="Map of the charging network" class="contain" />
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="section">
+      <div class="container">
+        <div class="stats">
+          <div class="stats__intro stack-32">
+            <div class="stack-16">
+              <p class="tagline">Tagline</p>
+              <div class="stack-24">
+                <h2 class="h2">Find Your Charge</h2>
+                <p class="text-md">View the network of Tesla Superchargers and Destination Chargers available near you.</p>
+              </div>
+            </div>
+            <div class="actions actions--24">
+              <a href="#" class="btn btn--secondary">Veiw Network</a>
+              <a href="#" class="btn btn--gray">Learn More <img src="assets/chevron-right.svg" alt="" width="24" height="24" /></a>
+            </div>
+          </div>
+          <div class="stats__list">
+            <div class="stat">
+              <p class="stat__value">22,593</p>
+              <p class="h6">Superchargers</p>
+            </div>
+            <div class="stat">
+              <p class="stat__value">300</p>
+              <p class="h6">Destination Chargers</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Other products slider -->
+    <section class="section">
+      <div class="container stack-80">
+        <div class="section-title">
+          <h2 class="h2">Other Products</h2>
+          <p class="text-md">Long Wheelbase Midsize SUV</p>
+        </div>
+        <div class="slider" data-slider>
+          <div class="slider__track">
+            <article class="slide">
+              <img src="assets/card-model-y.png" alt="" class="slide__bg slide__bg--contain" />
+              <div class="overlay"></div>
+              <div class="slide__content">
+                <p class="slide__quote">Model Y L Premium</p>
+                <div class="slide__footer">
+                  <div><p class="semibold">Starting at $61,9902</p><p>Захиалга өгөх</p></div>
+                  <img src="assets/partner-logo-1.svg" alt="" width="120" height="48" />
+                </div>
+              </div>
+            </article>
+            <article class="slide">
+              <img src="assets/card-placeholder.png" alt="" class="slide__bg" />
+              <div class="overlay"></div>
+              <div class="slide__content">
+                <p class="slide__quote">Model 3</p>
+                <div class="slide__footer">
+                  <div><p class="semibold">Lease From $439/mo</p><p>Захиалга өгөх</p></div>
+                  <img src="assets/partner-logo-2.svg" alt="" width="120" height="48" />
+                </div>
+              </div>
+            </article>
+            <article class="slide">
+              <img src="assets/card-placeholder.png" alt="" class="slide__bg" />
+              <div class="overlay"></div>
+              <div class="slide__content">
+                <p class="slide__quote">"I charge at home. The cost is low. The car is fast. It is a good deal."</p>
+                <div class="slide__footer">
+                  <div><p class="semibold">David Kim</p><p>Engineer, Solar Solutions</p></div>
+                  <img src="assets/partner-logo-1.svg" alt="" width="120" height="48" />
+                </div>
+              </div>
+            </article>
+            <article class="slide">
+              <img src="assets/card-placeholder.png" alt="" class="slide__bg" />
+              <div class="overlay"></div>
+              <div class="slide__content">
+                <p class="slide__quote">"The Robotaxi will change the city. No driver. No hassle. Just go."</p>
+                <div class="slide__footer">
+                  <div><p class="semibold">Sarah Jones</p><p>Urban Planner, City Works</p></div>
+                  <img src="assets/partner-logo-2.svg" alt="" width="120" height="48" />
+                </div>
+              </div>
+            </article>
+            <article class="slide">
+              <img src="assets/card-placeholder.png" alt="" class="slide__bg" />
+              <div class="overlay"></div>
+              <div class="slide__content">
+                <p class="slide__quote">"The Semi is a workhorse. It pulls heavy loads up steep grades without strain."</p>
+                <div class="slide__footer">
+                  <div><p class="semibold">Mike Brown</p><p>Fleet Manager, Haulage Co.</p></div>
+                  <img src="assets/partner-logo-1.svg" alt="" width="120" height="48" />
+                </div>
+              </div>
+            </article>
+            <article class="slide">
+              <img src="assets/card-placeholder.png" alt="" class="slide__bg" />
+              <div class="overlay"></div>
+              <div class="slide__content">
+                <p class="slide__quote">"I took the Model 3 on a trip to the mountains. The handling was sure. The views were fine."</p>
+                <div class="slide__footer">
+                  <div><p class="semibold">Emily Davis</p><p>Teacher, High School</p></div>
+                  <img src="assets/partner-logo-2.svg" alt="" width="120" height="48" />
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="slider__controls">
+            <img src="assets/slider-dots.svg" alt="" width="88" height="8" />
+            <div class="slider__buttons">
+              <button class="slider__arrow" type="button" data-dir="-1" aria-label="Previous"><img src="assets/arrow-back.svg" alt="" width="24" height="24" /></button>
+              <button class="slider__arrow" type="button" data-dir="1" aria-label="Next"><img src="assets/arrow-forward.svg" alt="" width="24" height="24" /></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__container">
+      <div class="footer__top">
+        <a href="#" class="logo" aria-label="Home"><img src="assets/tesla-wordmark.svg" alt="Tesla" width="120" height="16" /></a>
+        <nav class="footer__links">
+          <a href="#">Tesla © 2026</a>
+          <a href="#">Privacy &amp; Legal</a>
+          <a href="#">Vehicle Recalls</a>
+          <a href="#">Contact</a>
+          <a href="#">News</a>
+          <a href="#">Get Updates</a>
+          <a href="#">Locations</a>
+          <a href="#">Learn</a>
+        </nav>
+      </div>
+      <div class="footer__credits">
+        <img src="assets/divider.svg" alt="" class="footer__divider" />
+        <div class="footer__row">
+          <p>.</p>
+          <div class="footer__legal">
+            <a href="#">.</a><a href="#">.</a><a href="#">.</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Slider arrows: scroll one card at a time
+    document.querySelectorAll('[data-slider]').forEach(function (slider) {
+      var track = slider.querySelector('.slider__track');
+      slider.querySelectorAll('.slider__arrow').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var slide = track.querySelector('.slide');
+          var step = slide ? slide.offsetWidth + 32 : track.clientWidth;
+          track.scrollBy({ left: step * Number(btn.dataset.dir), behavior: 'smooth' });
+        });
+      });
+    });
+
+    // Mobile menu toggle
+    var toggle = document.querySelector('.navbar__toggle');
+    var links = document.getElementById('nav-links');
+    toggle.addEventListener('click', function () {
+      var open = links.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+  </script>
+</body>
+</html>
