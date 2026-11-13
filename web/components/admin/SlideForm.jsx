@@ -1,8 +1,17 @@
 "use client";
 
-import { useActionState, useState } from "react";
+import { useActionState, useRef, useState } from "react";
 import { createSlide, deleteSlide, saveSlide } from "@/app/admin/actions";
-import { imageOptions, inputClass, labelClass, logoOptions } from "./fields";
+import { createClient } from "@/lib/supabase/client";
+import {
+  IMAGE_BUCKET,
+  IMAGE_MAX_BYTES,
+  IMAGE_TYPES,
+  imageOptions,
+  inputClass,
+  labelClass,
+  logoOptions,
+} from "./fields";
 
 const EMPTY = { id: "", position: "", image: "", contain: false, quote: "", name: "", meta: "", logo: "" };
 
@@ -24,6 +33,45 @@ export default function SlideForm({ slide, nextPosition }) {
     setImageOverride(null);
   }
   const image = imageOverride ?? values.image;
+
+  // Компьютерээс зураг сонгоход хөтчөөс шууд Supabase Storage руу байршуулна
+  const imageInputRef = useRef(null);
+  const [upload, setUpload] = useState({ busy: false, message: null, ok: false });
+
+  async function handleUpload(e) {
+    const file = e.target.files?.[0];
+    e.target.value = "";
+    if (!file) return;
+    if (!IMAGE_TYPES.includes(file.type)) {
+      setUpload({ busy: false, ok: false, message: "Зөвхөн PNG, JPG, WEBP, AVIF, GIF зураг." });
+      return;
+    }
+    if (file.size > IMAGE_MAX_BYTES) {
+      setUpload({ busy: false, ok: false, message: "Зураг 5MB-аас ихгүй байх ёстой." });
+      return;
+    }
+
+    setUpload({ busy: true, ok: false, message: "Байршуулж байна…" });
+    const ext = file.name.split(".").pop()?.toLowerCase() || "png";
+    const path = `${crypto.randomUUID()}.${ext}`;
+    const supabase = createClient();
+    const { error } = await supabase.storage
+      .from(IMAGE_BUCKET)
+      .upload(path, file, { contentType: file.type, cacheControl: "31536000" });
+
+    if (error) {
+      setUpload({ busy: false, ok: false, message: `Байршуулж чадсангүй: ${error.message}` });
+      return;
+    }
+    const { data } = supabase.storage.from(IMAGE_BUCKET).getPublicUrl(path);
+    if (imageInputRef.current) imageInputRef.current.value = data.publicUrl;
+    setImageOverride(data.publicUrl);
+    setUpload({
+      busy: false,
+      ok: true,
+      message: isNew ? "Зураг байршлаа. «Карт нэмэх» дарна уу." : "Зураг байршлаа. «Хадгалах» дарна уу.",
+    });
+  }
 
   return (
     <form
@@ -71,17 +119,41 @@ export default function SlideForm({ slide, nextPosition }) {
             Тайлбар
             <input name="meta" required defaultValue={values.meta} className={inputClass} />
           </label>
-          <label className={labelClass}>
-            Зураг
-            <input
-              name="image"
-              required
-              list="image-options"
-              defaultValue={values.image}
-              onChange={(e) => setImageOverride(e.target.value)}
-              className={inputClass}
-            />
-          </label>
+          <div className={`${labelClass} xs:col-span-2`}>
+            <label htmlFor={`image-${slide?.id ?? "new"}`}>Зураг</label>
+            <div className="flex flex-wrap items-center gap-3">
+              <input
+                id={`image-${slide?.id ?? "new"}`}
+                ref={imageInputRef}
+                name="image"
+                required
+                list="image-options"
+                defaultValue={values.image}
+                onChange={(e) => setImageOverride(e.target.value)}
+                className={`${inputClass} min-w-0 flex-1 basis-60`}
+              />
+              {/* name-гүй: файл server action руу явахгүй, зөвхөн Storage руу */}
+              <label
+                className={`inline-flex shrink-0 cursor-pointer items-center rounded-md bg-neutral-5 px-4 py-2 font-medium transition-colors duration-150 hover:bg-neutral-10 ${
+                  upload.busy ? "pointer-events-none opacity-50" : ""
+                }`}
+              >
+                {upload.busy ? "Байршуулж байна…" : "Компьютерээс оруулах"}
+                <input
+                  type="file"
+                  accept={IMAGE_TYPES.join(",")}
+                  onChange={handleUpload}
+                  disabled={upload.busy}
+                  className="sr-only"
+                />
+              </label>
+            </div>
+            {upload.message && (
+              <p role="status" className={`text-sm font-normal ${upload.ok ? "text-green-700" : "text-red-700"}`}>
+                {upload.message}
+              </p>
+            )}
+          </div>
           <label className={labelClass}>
             Лого
             <select name="logo" defaultValue={values.logo} className={inputClass}>

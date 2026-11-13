@@ -12,4 +12,9 @@ export const imageOptions = [
   "/assets/offers.png",
 ];
 
+// Supabase Storage bucket-ийн тохиргоотой ижил байх ёстой
+export const IMAGE_BUCKET = "slide-images";
+export const IMAGE_TYPES = ["image/png", "image/jpeg", "image/webp", "image/avif", "image/gif"];
+export const IMAGE_MAX_BYTES = 5 * 1024 * 1024;
+
 export const logoOptions = ["/assets/partner-logo-1.svg", "/assets/partner-logo-2.svg"];

@@ -48,6 +48,12 @@ function readFields(formData) {
 
   const missing = ["image", "quote", "name", "meta", "logo"].filter((k) => !fields[k]);
   if (missing.length) return { error: `Хоосон талбар: ${missing.join(", ")}` };
+  // Зөвхөн сайтын дотоод зам (/assets/...) эсвэл https холбоос
+  for (const key of ["image", "logo"]) {
+    if (!/^(\/(?!\/)|https:\/\/)/.test(fields[key])) {
+      return { error: `${key}: "/assets/..." эсвэл "https://..." хэлбэртэй байх ёстой.` };
+    }
+  }
   if (!Number.isInteger(fields.position) || fields.position < 1) {
     return { error: "Дараалал 1-ээс их бүхэл тоо байх ёстой." };
   }
