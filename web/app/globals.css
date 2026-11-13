@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+/* ===== Design tokens (хуучин styles.css :root-оос) ===== */
+@theme {
+  /* Хуучин media query-тэй тааруулсан breakpoint (480 / 991 / 1100px) */
+  --breakpoint-*: initial;
+  --breakpoint-xs: 481px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1101px;
+
+  --color-fg: #f2f2f2;
+  --color-royal-blue: #4175e5;
+  --color-neutral-5: rgb(0 0 0 / 0.05);
+  --color-neutral-10: rgb(0 0 0 / 0.1);
+  --color-border: rgb(0 0 0 / 0.15);
+  --color-overlay: rgb(0 0 0 / 0.4);
+  --color-btn-gray: #e0e0e0;
+  --color-btn-gray-hover: #cfcfcf;
+  --color-arrow-hover: #e4e4e4;
+  --color-slide: #888888;
+
+  --text-sm: 14px;
+  --text-sm--line-height: 1.5;
+  --text-md: 18px;
+  --text-md--line-height: 1.5;
+}
+
+@theme inline {
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-roboto: var(--font-roboto-family), sans-serif;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-white);
+    color: var(--color-black);
+  }
+  button {
+    cursor: pointer;
+  }
+}
+
+/* ===== Гарчгууд: mobile-first, xs (>480) ба lg (>991) дээр томорно ===== */
+@utility text-h1 {
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  @media (width >= 481px) {
+    font-size: 48px;
+  }
+  @media (width >= 992px) {
+    font-size: 72px;
+  }
+}
+
+@utility text-h2 {
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  @media (width >= 481px) {
+    font-size: 40px;
+  }
+  @media (width >= 992px) {
+    font-size: 52px;
+  }
+}
+
+@utility text-h6 {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  @media (width >= 992px) {
+    font-size: 22px;
+  }
+}
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
