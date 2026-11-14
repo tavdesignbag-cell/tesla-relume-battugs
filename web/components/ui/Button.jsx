@@ -1,5 +1,5 @@
 const base =
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md border border-transparent font-medium leading-normal transition-[filter,background-color] duration-150";
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded border border-transparent font-medium leading-normal transition-[filter,background-color] duration-150";
 
 const sizes = {
   md: "px-6 py-2.5",
@@ -10,6 +10,7 @@ const variants = {
   primary: "border-royal-blue bg-royal-blue text-white hover:brightness-[0.92]",
   secondary: "bg-neutral-5 text-black hover:bg-neutral-10",
   gray: "bg-btn-gray text-black hover:bg-btn-gray-hover",
+  light: "bg-white/90 text-black hover:bg-white",
 };
 
 export default function Button({

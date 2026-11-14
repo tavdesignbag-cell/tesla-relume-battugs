@@ -13,7 +13,7 @@ export default async function Home() {
 
   return (
     <>
-      <Navbar />
+      <Navbar transparent />
       <main>
         <Hero />
         <FsdSection />

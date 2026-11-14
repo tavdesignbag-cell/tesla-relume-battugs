@@ -5,11 +5,14 @@ import Button from "@/components/ui/Button";
 import Logo from "@/components/ui/Logo";
 import { navLinks } from "@/data/navigation";
 
-export default function Navbar() {
+export default function Navbar({ transparent = false }) {
   const [open, setOpen] = useState(false);
 
+  // transparent: hero зураг дээр давхарлана (дүрс/дэвсгэр) — тусдаа цагаан зурвас үүсгэхгүй.
+  const position = transparent ? "absolute inset-x-0 top-0 bg-transparent" : "relative bg-white";
+
   return (
-    <header className="relative z-10 flex h-[72px] items-center bg-white px-5 lg:px-16">
+    <header className={`${position} z-10 flex h-[72px] items-center px-5 lg:px-16`}>
       <div className="flex w-full items-center gap-8">
         <div className="flex flex-1 basis-0 items-center">
           <Logo />

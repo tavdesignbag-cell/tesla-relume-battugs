@@ -54,6 +54,17 @@
   }
 }
 
+/* Hero гарчиг: зураг гол дүрс байх ёстой тул text-h1-ээс даруу (tesla.com ≈40px) */
+@utility text-hero {
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  @media (width >= 992px) {
+    font-size: 40px;
+  }
+}
+
 @utility text-h2 {
   font-size: 32px;
   font-weight: 500;

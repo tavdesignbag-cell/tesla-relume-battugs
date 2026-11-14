@@ -160,8 +160,8 @@ export const layout = [
 
 export const radii = [
   { name: "0", cls: "rounded-none", use: "Карт, зураг, SplitCard, hero" },
-  { name: "rounded", cls: "rounded", value: "4px", use: "Сумтай товч" },
-  { name: "rounded-md", cls: "rounded-md", value: "6px", use: "Бүх товч" },
+  { name: "rounded", cls: "rounded", value: "4px", use: "Бүх товч, сумтай товч" },
+  { name: "rounded-md", cls: "rounded-md", value: "6px", use: "Admin форм, input" },
   { name: "rounded-full", cls: "rounded-full", value: "50%", use: "Slider-ийн цэг" },
 ];
 

@@ -428,7 +428,7 @@ export default async function StyleguidePage() {
             <SgSection id="components">
               <Sub
                 title="Button · ui/Button.jsx"
-                note="<a> элемент. rounded-md, Inter 500, padding 10×24 (sm: 6×14 → 8×20). icon prop-оор баруун талд 24px дүрс."
+                note="<a> элемент. rounded (4px), Inter 500, padding 10×24 (sm: 6×14 → 8×20). icon prop-оор баруун талд 24px дүрс."
               >
                 <div className="flex flex-col gap-6 bg-white p-6 ring-1 ring-border lg:p-8">
                   {["md", "sm"].map((size) => (
