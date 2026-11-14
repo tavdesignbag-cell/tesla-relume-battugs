@@ -6,6 +6,7 @@ import { getCurrentUser } from "@/lib/auth";
 import { createClient } from "@/lib/supabase/server";
 
 const ID_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+const BYL_PRICE_PATTERN = /^[A-Za-z0-9_.-]{1,64}$/; // DB-ийн slides_byl_price_format-тай ижил
 
 // Action бүр эрхээ өөрөө шалгана: client-ийн илгээсэн юунд ч итгэхгүй.
 async function requireAdmin() {
@@ -27,6 +28,7 @@ function rawValues(formData) {
     name: text("name"),
     meta: text("meta"),
     logo: text("logo"),
+    byl_price: text("byl_price"),
   };
 }
 
@@ -44,7 +46,13 @@ function readFields(formData) {
     name: text("name"),
     meta: text("meta"),
     logo: text("logo"),
+    // Заавал биш: хоосон бол карт дээр төлбөрийн товч гарахгүй
+    byl_price: text("byl_price") || null,
   };
+
+  if (fields.byl_price && !BYL_PRICE_PATTERN.test(fields.byl_price)) {
+    return { error: "Byl үнийн key зөвхөн латин үсэг, тоо, _ . - байна. Жишээ: model_y_l_premium" };
+  }
 
   const missing = ["image", "quote", "name", "meta", "logo"].filter((k) => !fields[k]);
   if (missing.length) return { error: `Хоосон талбар: ${missing.join(", ")}` };

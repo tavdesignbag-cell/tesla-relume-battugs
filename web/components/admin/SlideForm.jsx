@@ -13,7 +13,7 @@ import {
   logoOptions,
 } from "./fields";
 
-const EMPTY = { id: "", position: "", image: "", contain: false, quote: "", name: "", meta: "", logo: "" };
+const EMPTY = { id: "", position: "", image: "", contain: false, quote: "", name: "", meta: "", logo: "", byl_price: "" };
 
 // Нэг картыг засах (slide өгвөл) эсвэл шинээр нэмэх (slide өгөхгүй бол) form
 export default function SlideForm({ slide, nextPosition }) {
@@ -163,6 +163,16 @@ export default function SlideForm({ slide, nextPosition }) {
                 </option>
               ))}
             </select>
+          </label>
+          <label className={labelClass}>
+            Byl үнийн key (хоосон бол товчгүй)
+            <input
+              name="byl_price"
+              pattern="[A-Za-z0-9_.\-]{1,64}"
+              placeholder="жш: model_y_l_premium"
+              defaultValue={values.byl_price ?? ""}
+              className={inputClass}
+            />
           </label>
           <label className="flex items-center gap-2 text-sm xs:col-span-2">
             <input name="contain" type="checkbox" defaultChecked={values.contain} className="size-4" />

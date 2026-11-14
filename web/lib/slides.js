@@ -10,7 +10,7 @@ export async function getSlides() {
 
   const { data, error } = await supabase
     .from("slides")
-    .select("id, image, contain, quote, name, meta, logo")
+    .select("id, image, contain, quote, name, meta, logo, byl_price")
     .order("position");
 
   if (error) {

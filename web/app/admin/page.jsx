@@ -66,6 +66,14 @@ async function AdminContent() {
 
   const nextPosition = (slides.at(-1)?.position ?? 0) + 1;
 
+  // Byl-ээр орж ирсэн сүүлийн захиалгууд (RLS: зөвхөн админ уншина)
+  const { data: orders, error: ordersError } = await supabase
+    .from("orders")
+    .select("id, created_at, status, amount_total, phone_number, customer_email, slides(quote)")
+    .order("created_at", { ascending: false })
+    .limit(20);
+  if (ordersError) throw new Error(`Захиалга уншихад алдаа гарлаа: ${ordersError.message}`);
+
   return (
     <>
       <div className="flex flex-wrap items-end justify-between gap-4">
@@ -94,6 +102,46 @@ async function AdminContent() {
       <section className="flex flex-col gap-4">
         <h2 className="text-h6">Шинэ карт нэмэх</h2>
         <SlideForm nextPosition={nextPosition} />
+      </section>
+
+      <section className="flex flex-col gap-4">
+        <h2 className="text-h6">Сүүлийн захиалгууд (Byl)</h2>
+        {orders.length === 0 ? (
+          <p className="bg-white p-5 text-sm opacity-60 ring-1 ring-border">Одоогоор захиалга алга.</p>
+        ) : (
+          <div className="overflow-x-auto bg-white ring-1 ring-border">
+            <table className="w-full text-left text-sm">
+              <thead className="border-b border-border">
+                <tr>
+                  {["Огноо", "Карт", "Төлөв", "Дүн", "Холбоо барих"].map((h) => (
+                    <th key={h} className="px-4 py-3 font-semibold whitespace-nowrap">
+                      {h}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {orders.map((o) => (
+                  <tr key={o.id} className="border-b border-border last:border-0">
+                    <td className="px-4 py-3 whitespace-nowrap">
+                      {new Date(o.created_at).toLocaleString("mn-MN", { timeZone: "Asia/Ulaanbaatar" })}
+                    </td>
+                    <td className="px-4 py-3">{o.slides?.quote ?? "—"}</td>
+                    <td className="px-4 py-3">
+                      <span className={o.status === "paid" ? "font-medium text-green-700" : "opacity-60"}>
+                        {o.status === "paid" ? "Төлөгдсөн" : "Хүлээгдэж буй"}
+                      </span>
+                    </td>
+                    <td className="px-4 py-3 whitespace-nowrap">
+                      {o.amount_total != null ? `₮${Number(o.amount_total).toLocaleString("mn-MN")}` : "—"}
+                    </td>
+                    <td className="px-4 py-3">{[o.phone_number, o.customer_email].filter(Boolean).join(" · ") || "—"}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
       </section>
     </>
   );

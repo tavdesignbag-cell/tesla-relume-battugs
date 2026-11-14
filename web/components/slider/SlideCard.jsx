@@ -1,4 +1,6 @@
-export default function SlideCard({ image, contain = false, quote, name, meta, logo }) {
+import CheckoutButton from "./CheckoutButton";
+
+export default function SlideCard({ id, image, contain = false, quote, name, meta, logo, byl_price }) {
   return (
     <article className="relative flex h-[460px] flex-[0_0_85%] snap-start flex-col justify-end bg-slide p-6 text-white lg:h-[560px] lg:flex-[0_0_608px] lg:p-8">
       <img
@@ -12,7 +14,14 @@ export default function SlideCard({ image, contain = false, quote, name, meta, l
         <div className="flex items-end gap-6">
           <div className="min-w-0 flex-1 basis-0">
             <p className="font-semibold">{name}</p>
-            <p>{meta}</p>
+            {/* Byl үнэтэй карт дээр meta нь төлбөрийн товч болно */}
+            {byl_price ? (
+              <div className="mt-2">
+                <CheckoutButton slideId={id}>{meta}</CheckoutButton>
+              </div>
+            ) : (
+              <p>{meta}</p>
+            )}
           </div>
           <img src={logo} alt="" width={120} height={48} className="h-12 w-[120px] shrink-0" />
         </div>
